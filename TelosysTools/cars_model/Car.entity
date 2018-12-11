@@ -1,0 +1,10 @@
+// Entity Car
+
+Car {
+  id : int { @Id} ;
+  name : string  { @SizeMax(40) } ; 
+  year : short { @Min(1900) @Max(2020) } ;
+  price : float { @Min(500) @Max(99999) };
+  brand : Brand { @NotNull } ;
+  driver : Driver ;
+}

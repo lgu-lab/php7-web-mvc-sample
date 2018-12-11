@@ -1,0 +1,9 @@
+// Entity Driver
+
+Driver {
+  id : long { @Id } ;
+  firstName : string { @SizeMax(20) } ;
+  lastName : string { @SizeMax(20) };
+  birthDate : date { @Past } ;
+  certified : boolean ; 
+}

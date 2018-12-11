@@ -1,0 +1,7 @@
+// Entity Company
+// Examples : PSA, Renault, Tata, etc
+
+Company {
+  id : short { @Id, @Min(1) } ; 
+  name : string { @NotNull, @NotEmpty, @SizeMax(20) } ; // field example 
+}
