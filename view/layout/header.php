@@ -1,6 +1,7 @@
 <?php 
 require_once 'commons/Action.php';
 require_once 'commons/FormMode.php';
+require_once 'commons/Message.php';
 ?>
 
 <!DOCTYPE html>

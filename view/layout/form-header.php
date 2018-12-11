@@ -6,8 +6,8 @@ require ('view/layout/header.php');
 <div class="jumbotron">
     <div class="container">
         <div class="container">
-            <!--  <form class="form-horizontal" method="post" id="car_form">  -->
-            <form class="form-horizontal" method="post" >
+            <!--  ---------- FORM ---------- -->
+            <form class="form-horizontal" method="post" id="car_form">
                 <div class="panel-group">
                     <div class="panel panel-info">
                     
@@ -27,7 +27,7 @@ require ('view/layout/header.php');
                         <!-- ---------- FIELDS -->
                         <div class="panel-body">
 						<?php if ( $msg != null && $msg != "" ) { ?>
-                            <div class="alert alert-success" role="alert">
+                            <div class="<?= $msg->css() ?>" role="alert">
                                 <?= $msg ?>
                             </div>
                     	<?php } ?>

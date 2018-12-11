@@ -14,10 +14,12 @@
   <div class="panel-footer">
   
     <button type="submit" formmethod="post" formaction="<?= $href->deleteCurrent() ?>" 
-            class="btn btn-danger pull-right"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+            class="btn btn-danger pull-right" ><span class="glyphicon glyphicon-trash"
+            ></span> Delete</button>
             
     <button type="submit" formmethod="post" formaction="<?= $href->updateCurrent() ?>" 
-            class="btn btn-success"><span class="glyphicon glyphicon-floppy-disk"></span> Save</button>
+            class="btn btn-success"><span class="glyphicon glyphicon-floppy-disk"
+            ></span> Save</button>
             
     <div class="clearfix"></div>
   </div>

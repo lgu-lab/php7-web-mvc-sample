@@ -2,6 +2,7 @@
 require_once 'commons/AbstractController.php';
 require_once 'commons/Logger.php';
 require_once 'commons/FormMode.php';
+require_once 'commons/Message.php';
 
 require_once 'entities/Car.php';
 require_once 'dao/CarDao.php';
@@ -164,16 +165,17 @@ class CarController extends AbstractController
         if ( $errMsg == NULL ) {
             // Validation OK
             if ( $this->dao->create($car) ) {
-            $msg = "Car '" . $car->getId() . "' created" ;
+                $msg = new Message( "Car '" . $car->getId() . "' created", Message::OK  );
             $this->renderFormForUpdate($car, $msg); // Switch to the 'update' form
             }
             else {
-                $msg = "Car '" . $car->getId() . "' not created" ;
+                $msg = new Message( "Car '" . $car->getId() . "' not created", Message::WARN );
                 $this->renderFormForCreate($car, $msg); // Stay on the 'create' form
             }
         }
         else {
-            $this->renderFormForCreate($car, $errMsg); // Stay on the 'create' form
+            $msg = new Message($errMsg, Message::ERR );
+            $this->renderFormForCreate($car, $msg); // Stay on the 'create' form
         }
     }
     
@@ -188,14 +190,14 @@ class CarController extends AbstractController
         if ( $errMsg == NULL ) {
             // Validation OK 
             if ( $this->dao->update($car) ) {
-                $msg = "Car '" . $car->getId() . "' updated" ;
+                $msg = new Message( "Car '" . $car->getId() . "' updated", Message::OK ) ;
             }
             else {
-                $msg = "Car '" . $car->getId() . "' not found" ;
+                $msg = new Message( "Car '" . $car->getId() . "' not found", Message::WARN ) ;
             }
         }
         else {
-            $msg = $errMsg ;        
+            $msg = new Message($errMsg, Message::ERR );
         }
         $this->renderFormForUpdate($car, $msg);
     }
@@ -208,14 +210,14 @@ class CarController extends AbstractController
         Logger::LOG("CarController: delete()", $requestData);
         $id = $requestData['id'];
         if ( $this->dao->delete($id) ) {
-            $msg = "Car '" . $id . "' deleted" ;
+            $msg = new Message("Car '" . $id . "' deleted", Message::OK ) ;
         }
         else {
-            $msg = "Car '" . $id . "' not found" ;
+            $msg = new Message("Car '" . $id . "' not found", Message::WARN ) ;
         }
         // Swith to list page
         $list = $this->dao->findAll();
-        $this->renderList($list, $msg);
+        $this->renderList($list, $msg); 
     }
 
 }
