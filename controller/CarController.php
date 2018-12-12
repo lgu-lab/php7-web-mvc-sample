@@ -17,7 +17,10 @@ require_once 'controller/CarHref.php';
 class CarController extends AbstractController
 {
     private $dao;
-
+    
+    private $formView = 'view/carForm.php';
+    private $listView = 'view/carList.php';
+    
     /**
      * Constructor
      */
@@ -36,7 +39,8 @@ class CarController extends AbstractController
         if ( isset($msg) && isset($list) ) {
             // Variables exposed and usable in the view : $list, $msg, $href
             $href = $this->getHREF();
-            require 'view/carList.php';
+            //require 'view/carList.php';
+            require $this->listView ;
         }
         else {
             $this->error("renderList(..,..) : 'msg' and/or 'list'  undefined");
@@ -52,7 +56,8 @@ class CarController extends AbstractController
         // Variables exposed and usable in the view : $car, $msg, $href, $formMode
         $formMode = FormMode::UPDATE ;
         $href = $this->getHREF();
-        require 'view/carForm.php';
+        //require 'view/carForm.php';
+        require $this->formView ;
     }
     
     /**
@@ -64,7 +69,8 @@ class CarController extends AbstractController
         // Variables exposed and usable in the view : $car, $msg, $href, $formMode
         $formMode = FormMode::CREATE ;
         $href = $this->getHREF();
-        require 'view/carForm.php';
+        //require 'view/carForm.php';
+        require $this->formView ;
     }
     
     /**
